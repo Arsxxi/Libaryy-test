@@ -6,3 +6,5 @@
 #### Warow,Gerald
 #### Patras,Samuel
 #### Otniel
+# REQUIREMENTS 
+## Import Database terlebih dahulu 
