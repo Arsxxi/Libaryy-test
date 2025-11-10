@@ -1,22 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-using System.Data;
-
 namespace Libaryy
 {
     public partial class FormAdmin : Form
     {
         string connectionString = "Server=localhost;Database=library;Uid=root;Pwd=;";
-        string selectedBookId = "";
-        string connectionString = "...";
         string selectedBookId = "";
         string selectedAnggotaId = "";
         string selectedBorrowId = "";
