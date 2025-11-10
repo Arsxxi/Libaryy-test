@@ -38,6 +38,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,7 +66,6 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // button1
             // 
@@ -84,7 +84,6 @@
             this.text_nim.Name = "text_nim";
             this.text_nim.Size = new System.Drawing.Size(121, 20);
             this.text_nim.TabIndex = 5;
-            this.text_nim.TextChanged += new System.EventHandler(this.text_nim_TextChanged);
             // 
             // label4
             // 
@@ -102,7 +101,6 @@
             this.text_nama.Name = "text_nama";
             this.text_nama.Size = new System.Drawing.Size(121, 20);
             this.text_nama.TabIndex = 3;
-            this.text_nama.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // comboBox_jurusan
             // 
@@ -118,7 +116,6 @@
             this.comboBox_jurusan.Name = "comboBox_jurusan";
             this.comboBox_jurusan.Size = new System.Drawing.Size(121, 21);
             this.comboBox_jurusan.TabIndex = 2;
-            this.comboBox_jurusan.SelectedIndexChanged += new System.EventHandler(this.comboBox_jurusan_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -143,12 +140,22 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Blank Script", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(461, 44);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(276, 117);
+            this.label5.Size = new System.Drawing.Size(305, 108);
             this.label5.TabIndex = 3;
             this.label5.Text = "Libary";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(1150, 619);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(30, 23);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "<-";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Form2
             // 
@@ -156,6 +163,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.ClientSize = new System.Drawing.Size(1192, 654);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
@@ -180,5 +188,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button2;
     }
 }

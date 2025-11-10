@@ -7,52 +7,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
+using MySql.Data.MySqlClient; // Pastikan ini ada
 
 namespace Libaryy
 {
     public partial class Form1 : Form
     {
-        string connectionString = "server=localhost;database=libary;uid=root;pwd=;";
+        // String koneksi ke database Anda
+        string connectionString = "server=localhost;database=library;uid=root;pwd=;";
+
         public Form1()
         {
             InitializeComponent();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             string username = textBox1.Text;
             string password = textBox2.Text;
+
+            // Validasi Input Kosong
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("Username dan Password harus diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
@@ -73,16 +52,32 @@ namespace Libaryy
                         if (role == "admin")
                         {
                             MessageBox.Show("Login berhasil sebagai Admin!");
-                            Form4 adminForm = new Form4(); // misalnya form admin
+                            FormAdmin adminForm = new FormAdmin();
+
+                            // --- PERUBAHAN DI SINI ---
+                            // Saat form admin ditutup, panggil 'this.Show()'
+                            // untuk menampilkan kembali form login.
+                            adminForm.FormClosed += (s, args) => this.Show();
+
                             adminForm.Show();
                             this.Hide();
                         }
                         else if (role == "user")
                         {
                             MessageBox.Show("Login berhasil sebagai User!");
-                            Form2 userForm = new Form2(); // form input peminjam
+                            Form2 userForm = new Form2();
+
+                            // --- PERUBAHAN DI SINI ---
+                            // Saat Form2 (alur user) ditutup,
+                            // panggil 'this.Show()' untuk menampilkan login lagi.
+                            userForm.FormClosed += (s, args) => this.Show();
+
                             userForm.Show();
                             this.Hide();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Role tidak dikenal: " + role, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else

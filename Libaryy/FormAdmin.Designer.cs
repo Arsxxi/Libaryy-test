@@ -62,8 +62,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.dgvAnggota = new System.Windows.Forms.DataGridView();
             this.tabLaporan = new System.Windows.Forms.TabPage();
-            this.dgvLaporan = new System.Windows.Forms.DataGridView();
             this.btnKonfirmasiKembali = new System.Windows.Forms.Button();
+            this.dgvLaporan = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabBuku.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -102,6 +104,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.btnResetBuku);
             this.groupBox1.Controls.Add(this.btnHapusBuku);
             this.groupBox1.Controls.Add(this.btnUpdateBuku);
@@ -417,16 +420,6 @@
             this.tabLaporan.Text = "Laporan Peminjaman";
             this.tabLaporan.UseVisualStyleBackColor = true;
             // 
-            // dgvLaporan
-            // 
-            this.dgvLaporan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLaporan.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dgvLaporan.Location = new System.Drawing.Point(3, 3);
-            this.dgvLaporan.Name = "dgvLaporan";
-            this.dgvLaporan.Size = new System.Drawing.Size(691, 150);
-            this.dgvLaporan.TabIndex = 0;
-            this.dgvLaporan.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLaporan_CellClick);
-            // 
             // btnKonfirmasiKembali
             // 
             this.btnKonfirmasiKembali.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -438,12 +431,42 @@
             this.btnKonfirmasiKembali.UseVisualStyleBackColor = true;
             this.btnKonfirmasiKembali.Click += new System.EventHandler(this.btnKonfirmasiKembali_Click);
             // 
+            // dgvLaporan
+            // 
+            this.dgvLaporan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLaporan.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dgvLaporan.Location = new System.Drawing.Point(3, 3);
+            this.dgvLaporan.Name = "dgvLaporan";
+            this.dgvLaporan.Size = new System.Drawing.Size(691, 150);
+            this.dgvLaporan.TabIndex = 0;
+            this.dgvLaporan.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLaporan_CellClick);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(650, 162);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(25, 23);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "<-";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(704, 343);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(8, 8);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // FormAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.ClientSize = new System.Drawing.Size(705, 382);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.tabControl1);
             this.Name = "FormAdmin";
             this.Text = "FormAdmin";
@@ -502,5 +525,7 @@
         private System.Windows.Forms.Button btnTambahAnggota;
         private System.Windows.Forms.DataGridView dgvLaporan;
         private System.Windows.Forms.Button btnKonfirmasiKembali;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
