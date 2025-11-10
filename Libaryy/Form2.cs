@@ -13,7 +13,7 @@ namespace Libaryy
     public partial class Form2 : Form
     {
 
-        string connectionString = "server=localhost;database=libary_db;uid=root;pwd=;";
+        string connectionString = "server=localhost;database=libary;uid=root;pwd=;";
         public Form2()
         {
             InitializeComponent();
@@ -44,17 +44,23 @@ namespace Libaryy
             string nama = text_nama.Text;
             string nim = text_nim.Text;
             string jurusan = comboBox_jurusan.Text;
+
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "INSERT INTO peminjam (nama, nim, jurusan) VALUES (@nama, @nim, @jurusan)";
+                string query = "INSERT INTO anggota (nama_lengkap, jurusan, nim) VALUES (@nama_lengkap, @nim, @jurusan)";
                 MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@nama", nama);
+                cmd.Parameters.AddWithValue("@nama_lengkap", nama);
                 cmd.Parameters.AddWithValue("@nim", nim);
                 cmd.Parameters.AddWithValue("@jurusan", jurusan);
                 cmd.ExecuteNonQuery();
 
                 MessageBox.Show("Data berhasil disimpan!");
+
+                // Setelah simpan, lanjut ke form pilih buku
+                Form3 formPilihBuku = new Form3(nim); // kirim nim ke form3
+                formPilihBuku.Show();
+                this.Hide();
             }
         }
     }
