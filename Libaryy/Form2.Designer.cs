@@ -44,10 +44,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Blank Script", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(459, 53);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(463, 53);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(276, 117);
+            this.label1.Size = new System.Drawing.Size(305, 108);
             this.label1.TabIndex = 1;
             this.label1.Text = "Libary";
             // 
@@ -60,9 +60,9 @@
             this.groupBox1.Controls.Add(this.comboBox_jurusan);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(283, 190);
+            this.groupBox1.Location = new System.Drawing.Point(290, 180);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(607, 338);
+            this.groupBox1.Size = new System.Drawing.Size(607, 339);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
