@@ -6,7 +6,7 @@ namespace Libaryy
 {
     public partial class FormAdmin : Form
     {
-        string connectionString = "Server=localhost;Database=library;Uid=root;Pwd=;";
+        string connectionString = "Server=localhost;Database=libary;Uid=root;Pwd=;";
         string selectedBookId = "";
         string selectedAnggotaId = "";
         string selectedBorrowId = "";

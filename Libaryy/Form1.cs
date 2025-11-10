@@ -14,7 +14,7 @@ namespace Libaryy
     public partial class Form1 : Form
     {
         // String koneksi ke database Anda
-        string connectionString = "server=localhost;database=library;uid=root;pwd=;";
+        string connectionString = "server=localhost;database=libary;uid=root;pwd=;";
 
         public Form1()
         {

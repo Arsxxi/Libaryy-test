@@ -13,7 +13,7 @@ namespace Libaryy
 {
     public partial class Form3 : Form
     {
-        string connectionString = "server=localhost;database=library;uid=root;pwd=;";
+        string connectionString = "server=localhost;database=libary;uid=root;pwd=;";
         string idAnggota; // Kita ganti nama 'nim' menjadi 'idAnggota' agar lebih jelas
 
         // --- PERBAIKAN 1: Constructor ---
