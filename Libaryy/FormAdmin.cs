@@ -431,7 +431,7 @@ namespace Libaryy
                 conn.Close();
             }
         }
-
+        // LOAD DATA
         private void LoadDataLaporan()
         {
             MySqlConnection conn = new MySqlConnection(connectionString);
