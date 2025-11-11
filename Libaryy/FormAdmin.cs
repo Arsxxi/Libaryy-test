@@ -6,7 +6,7 @@ namespace Libaryy
 {
     public partial class FormAdmin : Form
     {
-        string connectionString = "Server=localhost;Database=libary;Uid=root;Pwd=;";
+        string connectionString = "Server=localhost;Database=library;Uid=root;Pwd=;";
         string selectedBookId = "";
         string selectedAnggotaId = "";
         string selectedBorrowId = "";
@@ -364,31 +364,71 @@ namespace Libaryy
                 return;
             }
 
-            if (MessageBox.Show("Anda yakin ingin menghapus anggota '" + txtNamaLengkap.Text + "'?",
-                "Konfirmasi Hapus", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            try
             {
-                MySqlConnection conn = new MySqlConnection(connectionString);
-                try
-                {
-                    conn.Open();
-                    string query = "DELETE FROM anggota WHERE id_anggota = @id";
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@id", selectedAnggotaId);
+                conn.Open();
 
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Anggota berhasil dihapus!");
+                // --- PERBAIKAN DI SINI ---
+                // Kita hanya cek peminjaman yang AKTIF (tanggal_kembali masih KOSONG/NULL)
+                string checkQuery = "SELECT COUNT(*) FROM peminjaman WHERE id_anggota = @id AND tanggal_kembali IS NULL";
+                MySqlCommand checkCmd = new MySqlCommand(checkQuery, conn);
+                checkCmd.Parameters.AddWithValue("@id", selectedAnggotaId);
 
-                    LoadDataAnggota();
-                    ClearFormAnggota();
-                }
-                catch (Exception ex)
+                int activeBorrowCount = Convert.ToInt32(checkCmd.ExecuteScalar());
+
+                if (activeBorrowCount > 0)
                 {
-                    MessageBox.Show("Gagal menghapus anggota: " + ex.Message);
+                    // Jika count > 0, berarti ada buku yang BELUM dikembalikan. BLOKIR.
+                    MessageBox.Show("Gagal menghapus! Anggota ini masih memiliki " + activeBorrowCount + " buku yang belum dikembalikan.",
+                                    "Error Hapus", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                finally
+                else
                 {
-                    conn.Close();
+                    // --- Jika aman (count = 0), baru jalankan proses HAPUS ---
+                    if (MessageBox.Show("Anda yakin ingin menghapus anggota '" + txtNamaLengkap.Text + "'?\nRiwayat peminjamannya juga akan terhapus.",
+                        "Konfirmasi Hapus", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    {
+                        MySqlTransaction transaction = conn.BeginTransaction();
+                        try
+                        {
+                            // Kueri 1: Hapus riwayat peminjaman (anak)
+                            // Ini opsional, tapi bagus untuk kebersihan data.
+                            // Jika Anda ingin menyimpan riwayat, lewati kueri ini.
+                            string deleteHistoryQuery = "DELETE FROM peminjaman WHERE id_anggota = @id";
+                            MySqlCommand deleteHistoryCmd = new MySqlCommand(deleteHistoryQuery, conn, transaction);
+                            deleteHistoryCmd.Parameters.AddWithValue("@id", selectedAnggotaId);
+                            deleteHistoryCmd.ExecuteNonQuery();
+
+                            // Kueri 2: Hapus anggota (induk)
+                            string deleteQuery = "DELETE FROM anggota WHERE id_anggota = @id";
+                            MySqlCommand deleteCmd = new MySqlCommand(deleteQuery, conn, transaction);
+                            deleteCmd.Parameters.AddWithValue("@id", selectedAnggotaId);
+                            deleteCmd.ExecuteNonQuery();
+
+                            // Jika semua berhasil
+                            transaction.Commit();
+                            MessageBox.Show("Anggota berhasil dihapus!");
+
+                            LoadDataAnggota();
+                            ClearFormAnggota();
+                        }
+                        catch (Exception exTrans)
+                        {
+                            // Jika salah satu gagal, batalkan
+                            transaction.Rollback();
+                            MessageBox.Show("Gagal menghapus (transaksi dibatalkan): " + exTrans.Message);
+                        }
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Gagal menghapus anggota: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
             }
         }
 

@@ -65,7 +65,7 @@
             this.groupBox1.Size = new System.Drawing.Size(607, 339);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Student Profile";
             // 
             // button1
             // 
@@ -74,7 +74,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 6;
-            this.button1.Text = "submit";
+            this.button1.Text = "Next";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -143,9 +143,9 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(461, 44);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(305, 108);
+            this.label5.Size = new System.Drawing.Size(337, 108);
             this.label5.TabIndex = 3;
-            this.label5.Text = "Libary";
+            this.label5.Text = "Library";
             // 
             // button2
             // 

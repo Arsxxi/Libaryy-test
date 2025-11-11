@@ -13,7 +13,7 @@ namespace Libaryy
 {
     public partial class Form2 : Form
     {
-        string connectionString = "server=localhost;database=libary;uid=root;pwd=;";
+        string connectionString = "server=localhost;database=library;uid=root;pwd=;";
 
         public Form2()
         {
